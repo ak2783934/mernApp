@@ -77,7 +77,7 @@ class App extends React.Component {
     console.log("State is :", this.state);
     return (
       <div className="app">
-        <h2>Upload your dick/pussies and confess the horny moment</h2>
+        <h2>Upload your thoughts</h2>
         <form onSubmit={this.submit}>
           <div className="form-input">
             <input
