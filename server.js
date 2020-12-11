@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 //import npm packages
 const express = require("express");
 const mongoose = require("mongoose");
@@ -7,9 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const routes = require("./routes/api");
 const BlogPost = require("./models/BlogPost");
-require("dotenv").config();
 
-mongoose.connect(process.env.codedPath || "mongodb://localhost/mernApp", {
+mongoose.connect(process.env.CODE_PATH || "mongodb://localhost/mernApp", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
