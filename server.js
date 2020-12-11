@@ -7,11 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const routes = require("./routes/api");
 const BlogPost = require("./models/BlogPost");
+require("dotenv").config();
 
-const codedPath =
-  "mongodb+srv://ak2783934:Avinash@cluster0.goarw.mongodb.net/<dbname>?retryWrites=true&w=majority";
-
-mongoose.connect(codedPath || "mongodb://localhost/mernApp", {
+mongoose.connect(process.env.codedPath || "mongodb://localhost/mernApp", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
