@@ -78,6 +78,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <h2>Upload a picture and describe what you think about it!</h2>
+        <h3>Hell yeah! this is the place to work bro!</h3>
         <form onSubmit={this.submit}>
           <div className="form-input">
             <input
