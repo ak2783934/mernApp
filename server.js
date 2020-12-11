@@ -13,8 +13,6 @@ const BlogPost = require("./models/BlogPost");
 //atlas connection is here bro!
 
 //This is the thing which should be hidden while deploying
-const MONGODB_URL =
-  "mongodb+srv://ak2783934:Avinash@cluster0.goarw.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
 */
 
