@@ -3,8 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 //creating the schema here
 const BlogPostSchema = new Schema({
-  title: String,
   body: String,
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
   date: {
     type: String,
     default: Date.now(),

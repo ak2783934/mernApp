@@ -1,4 +1,5 @@
 const dotenv = require("dotenv").config();
+const bodyParser = require("body-parser");
 
 //import npm packages
 const express = require("express");
@@ -6,9 +7,10 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const path = require("path");
 const app = express();
+//port
 const PORT = process.env.PORT || 8080;
+//route
 const routes = require("./routes/api");
-const BlogPost = require("./models/BlogPost");
 
 mongoose.connect(process.env.CODE_PATH || "mongodb://localhost/mernApp", {
   useNewUrlParser: true,
@@ -25,8 +27,12 @@ mongoose.connection.on("connected", () => {
 //similarly we are not getting any body parsed into the request, so we just pass the data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //HTTP logger is used here
 app.use(morgan("tiny"));
+
 //routes
 app.use("/api", routes);
 
