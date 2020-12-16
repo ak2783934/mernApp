@@ -35,6 +35,7 @@ class App extends React.Component {
 
   submit = (event) => {
     event.preventDefault();
+
     const data = new FormData();
     data.append("img", this.state.img, this.state.img.name);
     data.append("data", this.state.body);
@@ -83,7 +84,7 @@ class App extends React.Component {
     }
     return (
       <div className="row w-75 ">
-        {posts.map((post, index) => (
+        {posts.map((post, inde x) => (
           <div
             key={index}
             className="blogPostDisplay col-3 mb-1 p-3 text-center justify-content-center"
