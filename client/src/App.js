@@ -26,31 +26,33 @@ class App extends React.Component {
       .then((res) => {
         const data = res.data;
         this.setState({ posts: data });
-        console.log("Data is public bro! DATA: ", data);
+        // console.log("Data is public bro! DATA: ", data);
       })
       .catch((err) => {
-        console.log("Fuck! bahar nai nikl rha h bro!");
+        console.log("Get route is not working!");
       });
   };
 
   submit = (event) => {
     event.preventDefault();
+    var axData = new FormData();
+    axData.append("img", this.state.img);
+    axData.append("body", this.state.body);
+    // console.log("DATA BEFORE AXIOS: ", this.state.img, this.state.body);
 
-    const data = new FormData();
-    data.append("img", this.state.img, this.state.img.name);
-    data.append("data", this.state.body);
     axios({
       url: "/api/save",
       method: "POST",
-      data: data,
+      data: axData,
+      headers: { "Content-Type": "multipart/form-data" },
     })
       .then((response) => {
-        console.log("data has been sent to the server RESPONSE: ", response);
+        // console.log("data has been sent to the server RESPONSE: ", response);
         this.resetUserInput();
         this.getBlogPost();
       })
       .catch((err) => {
-        console.log("Data is not posted: and payload is :", data);
+        console.log("Data is not posted");
       });
   };
 
@@ -61,21 +63,17 @@ class App extends React.Component {
     });
   };
 
-  arrayBufferToBase64(buffer) {
-    var binary = "";
-    var bytes = [].slice.call(new Uint8Array(buffer));
-    bytes.forEach((b) => (binary += String.fromCharCode(b)));
-    return window.btoa(binary);
-  }
-
   displayImg = (post) => {
-    const base64Flag = `data:${post.contentType};base64,`;
-
-    const imageStr = this.arrayBufferToBase64(post.img.data.data);
-
-    const url = base64Flag + imageStr;
-    console.log("URL IS HERE ", url);
-    return <img src={url} alt="imgs" className="img-fluid jumbotron-fluid" />;
+    if (post.img !== undefined) {
+      // console.log("URL IS HERE ", post.img.url);
+      return (
+        <img
+          src={post.img.url}
+          alt="imgs"
+          className="img-fluid jumbotron-fluid"
+        />
+      );
+    }
   };
 
   displayLivePost = (posts) => {
@@ -84,13 +82,13 @@ class App extends React.Component {
     }
     return (
       <div className="row w-75 ">
-        {posts.map((post, inde x) => (
+        {posts.map((post, index) => (
           <div
             key={index}
             className="blogPostDisplay col-3 mb-1 p-3 text-center justify-content-center"
           >
             {this.displayImg(post)}
-            <p>{post.body}</p>
+            <p class="font-weight-bold">{post.body}</p>
           </div>
         ))}
       </div>
@@ -98,7 +96,7 @@ class App extends React.Component {
   };
 
   render() {
-    console.log("State is :", this.state);
+    // console.log("State is :", this.state);
     return (
       <div className="app">
         <h2>Upload a picture and describe what you think about it!</h2>
