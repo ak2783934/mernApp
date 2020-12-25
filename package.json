@@ -7,8 +7,8 @@
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "client": "cd client && npm start",
-    "dev": "concurrently \"nodemon server.js\" \" npm run client\" "
+    // "client": "cd client && npm start",
+    // "dev": "concurrently \"nodemon server.js\" \" npm run client\" "
   },
   "engines": {
     "node": "12.19.0"
