@@ -88,7 +88,7 @@ class App extends React.Component {
             className="blogPostDisplay col-3 mb-1 p-3 text-center justify-content-center"
           >
             {this.displayImg(post)}
-            <p class="font-weight-bold">{post.body}</p>
+            <p className="font-weight-bold">{post.body}</p>
           </div>
         ))}
       </div>
