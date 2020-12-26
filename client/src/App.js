@@ -81,11 +81,11 @@ class App extends React.Component {
       return null;
     }
     return (
-      <div className="row w-75 ">
+      <div className="row">
         {posts.map((post, index) => (
           <div
             key={index}
-            className="blogPostDisplay col-3 mb-1 p-3 text-center justify-content-center"
+            className="blogPostDisplay col-3 p-0  text-center justify-content-center"
           >
             {this.displayImg(post)}
             <p className="font-weight-bold">{post.body}</p>
@@ -99,32 +99,47 @@ class App extends React.Component {
     // console.log("State is :", this.state);
     return (
       <div className="app">
-        <h2>Upload a picture and describe what you think about it!</h2>
-        <h3>Hell yeah! this is the place to work bro!</h3>
-        <form method="POST" encType="multipart/form-data">
-          <div className="form-input">
+        <h2 className="text-center"> Upload and say!</h2>
+        <form
+          method="POST"
+          className="col-lg p-0 input-group"
+          encType="multipart/form-data"
+        >
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-label="Image upload!">
+              Images Upload!
+            </span>
+          </div>
+          <div className="form-input ">
             <input
               type="file"
               name="img"
-              // value={this.state.img}
+              value={this.state.img}
               onChange={this.handleChange("img")}
               placeholder="Post the image!"
               required
               accept="image"
             />
           </div>
+
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-label="About!">
+              About!
+            </span>
+          </div>
           <div className="form-input">
             <textarea
               name="body"
-              cols="30"
-              rows="10"
               value={this.state.body}
               placeholder="Say about the image"
               onChange={this.handleChange("body")}
               required
             ></textarea>
           </div>
-          <button className="btn btn-success btn-lg m-1" onClick={this.submit}>
+          <button
+            className="btn btn-success btn-block  m-1"
+            onClick={this.submit}
+          >
             Submit
           </button>
         </form>

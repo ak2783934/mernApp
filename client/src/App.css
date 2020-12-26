@@ -1,5 +1,6 @@
 .app {
   padding: 10px;
+  margin: 0 auto;
 }
 .form-input {
   margin: 10px 0px;
@@ -7,9 +8,7 @@
 
 .blogPostDisplay {
   border: 1px solid lightseagreen;
-  margin: 5px 0px;
   border-radius: 5px;
-  padding: 10px;
 }
 
 form {
