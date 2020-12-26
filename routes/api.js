@@ -17,6 +17,7 @@ router.post("/save", (req, res) => {
   const data = req.body;
 
   const newBlogPost = new BlogPost(data);
+
   newBlogPost.save((err) => {
     if (err) {
       res.status(500).json({ msg: "Sorry, The data is couldn't be saved" });
