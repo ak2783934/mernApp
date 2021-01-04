@@ -1,5 +1,4 @@
-const dotenv = require("dotenv").config();
-
+require("dotenv").config();
 //import npm packages
 const express = require("express");
 const mongoose = require("mongoose");
